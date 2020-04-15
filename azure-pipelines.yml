@@ -8,15 +8,24 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  demands:
+    - npm
 
 steps:
-- task: NodeTool@0
+- task: Npm@1
+  displayName: Install Angular CLI
   inputs:
-    versionSpec: '12.x'
-  displayName: 'Install Node.js'
+    command: 'custom'
+    customCommand: 'install -g @angular/cli'
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
+- task: Npm@1
+  displayName: Install npm dependencies
+  inputs:
+    command: 'install'
+
+- task: CmdLine@2
+  displayName: 'Build application'
+  inputs:
+    script: 'ng build --prod'
+
+
