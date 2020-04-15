@@ -12,11 +12,8 @@ pool:
     - npm
 
 steps:
-- task: Npm@1
+- script: npm install -g @angular/cli
   displayName: Install Angular CLI
-  inputs:
-    command: 'custom'
-    customCommand: 'install -g @angular/cli'
 
 - task: Npm@1
   displayName: Install npm dependencies
