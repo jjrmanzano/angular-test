@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/rodriguezmaj/angular-test/_apis/build/status/Angular%20Test%20CI?branchName=master)](https://dev.azure.com/rodriguezmaj/angular-test/_build/latest?definitionId=1&branchName=master)
+
 # AngularTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
