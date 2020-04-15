@@ -12,17 +12,15 @@ pool:
     - npm
 
 steps:
-- script: npm install -g @angular/cli
-  displayName: Install Angular CLI
-
 - task: Npm@1
   displayName: Install npm dependencies
   inputs:
     command: 'install'
 
-- task: CmdLine@2
-  displayName: 'Build application'
+- task: Npm@1
+  displayName: Build application
   inputs:
-    script: 'ng build --prod'
+    command: 'custom'
+    customCommand: 'run build-prod'
 
 
