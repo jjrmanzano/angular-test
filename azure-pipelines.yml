@@ -26,7 +26,7 @@ steps:
 - task: ArchiveFiles@2
   displayName: Compress build files
   inputs:
-    rootFolderOrFile: 'dist/angular-test/'
+    rootFolderOrFile: 'dist/angular-test'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
