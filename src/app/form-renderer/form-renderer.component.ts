@@ -29,13 +29,13 @@ export class FormRendererComponent implements OnInit {
     })
   }
 
-  buildForm() {
+  buildForm(): void {
     this.formGroup = this.fb.group(
       this.adaptInputsToBuilder()
     );
   }
 
-  adaptInputsToBuilder() {
+  adaptInputsToBuilder(): Object {
     let adaptedInputs: Object = {};
 
     this.formInputs.forEach((element: FormInput) => {
