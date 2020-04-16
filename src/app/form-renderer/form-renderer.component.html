@@ -1,16 +1,6 @@
 <form [formGroup]="formGroup">
   <mat-form-field *ngFor="let formInput of formInputs">
     <mat-label>{{formInput.label}}</mat-label>
-    <input matInput [formControlName]="formInput.key">
+    <input matInput [formControlName]="formInput.key" [type]="formInput.type">
   </mat-form-field>
 </form>
-
-<mat-card>
-  <mat-card-header>
-    <mat-card-subtitle>Form Value</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>{{ formValue() }}</p>
-  </mat-card-content>
-</mat-card>
-

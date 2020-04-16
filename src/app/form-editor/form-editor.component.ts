@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormInput } from '../interfaces/form-input';
+import FIRST_FORM from '../config/first-form';
+
 
 @Component({
   selector: 'app-form-editor',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormEditorComponent implements OnInit {
 
-  constructor() { }
+  // A service here is needed to retrieve the configuration form.
+  formInputs: FormInput[] = FIRST_FORM;
+
+  formValue: any;
 
   ngOnInit(): void {
   }
 
+  formUpdated(formValue): void {
+    this.formValue = formValue
+  }
 }

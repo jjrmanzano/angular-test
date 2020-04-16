@@ -1,11 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
-export interface FormInput {
-  key: string;
-  type: string;
-  label?: string;
-}
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { FormInput } from '../interfaces/form-input';
 
 @Component({
   selector: 'app-form-renderer',
@@ -16,28 +11,37 @@ export class FormRendererComponent implements OnInit {
 
   formGroup: FormGroup;
 
-  formInputs: FormInput[] = [
-    { "key": "firstName", "type": "text", "label": "First Name" },
-    { "key": "lastName", "type": "text", "label": "Last Name" }
-  ];
+  @Input()
+  formInputs: FormInput[];
 
-  constructor(public fb: FormBuilder) {}
+  @Output()
+  formValue: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor(public fb: FormBuilder) {
+
+  }
 
   ngOnInit(): void {
-    this.buildForm()
+    this.buildForm();
+
+    this.formGroup.valueChanges.subscribe(newValue => {
+      this.formValue.emit(newValue);
+    })
   }
 
   buildForm() {
-    let formBuilderGroup: { [key: string]: any; } = {};
-
-    this.formInputs.forEach((element: FormInput) => {
-      formBuilderGroup[element.key] = [''];
-    })
-
-    this.formGroup = this.fb.group(formBuilderGroup);
+    this.formGroup = this.fb.group(
+      this.adaptInputsToBuilder()
+    );
   }
 
-  formValue() {
-    return JSON.stringify(this.formGroup.value)
+  adaptInputsToBuilder() {
+    let adaptedInputs: Object = {};
+
+    this.formInputs.forEach((element: FormInput) => {
+      adaptedInputs[element.key] = [''];
+    })
+
+    return adaptedInputs;
   }
 }

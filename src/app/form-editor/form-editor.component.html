@@ -1,1 +1,10 @@
-<app-form-renderer></app-form-renderer>
+<app-form-renderer [formInputs]="formInputs" (formValue)="formUpdated($event)"></app-form-renderer>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-subtitle>Form Value</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ formValue | json }}</p>
+  </mat-card-content>
+</mat-card>
