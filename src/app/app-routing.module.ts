@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormRendererComponent } from './form-renderer/form-renderer.component';
+import { FormEditorComponent } from './form-editor/form-editor.component';
 
 
 const routes: Routes = [
-  { path: 'form', component: FormRendererComponent }
+  { path: 'form', component: FormEditorComponent }
 ];
 
 @NgModule({

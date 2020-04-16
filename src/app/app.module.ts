@@ -12,11 +12,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { FormRendererComponent } from './form-renderer/form-renderer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormEditorComponent } from './form-editor/form-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormRendererComponent
+    FormRendererComponent,
+    FormEditorComponent
   ],
   imports: [
     BrowserModule,
