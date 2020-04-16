@@ -1,11 +1,7 @@
 <form [formGroup]="formGroup">
-  <mat-form-field>
-    <mat-label>First Name</mat-label>
-    <input matInput formControlName="firstName">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Last Name</mat-label>
-    <input matInput formControlName="lastName">
+  <mat-form-field *ngFor="let formInput of formInputs">
+    <mat-label>{{formInput.label}}</mat-label>
+    <input matInput [formControlName]="formInput.key">
   </mat-form-field>
 </form>
 
