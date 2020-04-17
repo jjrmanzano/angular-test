@@ -43,6 +43,19 @@ describe('FormRendererComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should emit form changes', () => {
+    let firstName = 'My first name';
+
+    component.formGroup.valueChanges.subscribe(newValue => {
+      expect(newValue.firstName).toBe(firstName);
+    });
+
+    component.formGroup.setValue({'firstName': firstName});
+
+    firstName = 'My second name';
+    component.formGroup.setValue({'firstName': firstName});
+  });
+
   describe('buildForm', () => {
     it('should render an input', () => {
       const compiled = fixture.nativeElement;
