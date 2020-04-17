@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormInput } from '../interfaces/form-input';
 
 @Component({
@@ -23,10 +23,7 @@ export class FormRendererComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-
-    this.formGroup.valueChanges.subscribe(newValue => {
-      this.formValue.emit(newValue);
-    })
+    this.emitFormChanges();
   }
 
   buildForm(): void {
@@ -43,5 +40,11 @@ export class FormRendererComponent implements OnInit {
     })
 
     return adaptedInputs;
+  }
+
+  emitFormChanges(): void {
+    this.formGroup.valueChanges.subscribe(newValue => {
+      this.formValue.emit(newValue);
+    })
   }
 }
